@@ -1,0 +1,11 @@
+use domain::errors::DomainError;
+use thiserror::Error;
+
+#[derive(Debug, Error)]
+pub enum AppError {
+    #[error(transparent)]
+    Domain(#[from] DomainError),
+
+    #[error("Unexpected error: {0}")]
+    Unexpected(String),
+}

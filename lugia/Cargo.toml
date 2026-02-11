@@ -1,0 +1,26 @@
+[workspace]
+members = ["crates/domain", "crates/app", "crates/infra"]
+
+[package]
+name = "lugia"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+domain = { path = "./crates/domain" }
+app = { path = "./crates/app" }
+infra = { path = "./crates/infra" }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.22", features = ["env-filter"] }
+
+serde = { workspace = true }
+axum = { workspace = true }
+tokio = { workspace = true }
+
+[workspace.dependencies]
+serde = { version = "1.0", features = ["derive"] }
+deadpool-diesel = { version = "0.6.1", features = ["postgres"] }
+diesel = { version = "2.3.6", features = ["postgres"] }
+axum = { version = "0.8.8", features = ["macros"] }
+tokio = { version = "1", features = ["full"] }
+thiserror = "2.0.18"
